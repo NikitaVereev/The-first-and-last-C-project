@@ -63,5 +63,61 @@ namespace IS
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+
+            var loginUser = txtEmail.Text;
+            var passUserr = txtPassword.Text;         
+
+            string querystring = $"insert into register(login_user, password_user) values('{loginUser}', '{passUserr}')";
+            SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
+
+            dataBase.openConnection();
+
+            if (command.ExecuteNonQuery() == 1)
+            {
+                MessageBox.Show("Аккаунт успешно создан!", "УСпешно!");
+                NextForm frm1 = new NextForm();
+                this.Hide();
+                frm1.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Аккаунт не создан!");
+            }
+            dataBase.closeConnection();
+        }
+
+        private Boolean checkuser()
+        {
+            var loginUser = txtEmail.Text;
+            var passUser = txtPassword.Text;
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable table = new DataTable();
+            string querystring = $"select id_user, login_user, password_user from register where login_user = '{loginUser}' and password_user = '{passUser}'";
+
+            SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
+
+            adapter.SelectCommand= command;
+            adapter.Fill(table);
+
+            if(table.Rows.Count > 0)
+            {
+                MessageBox.Show("Пользователь цжу существует!");
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
     }
 }

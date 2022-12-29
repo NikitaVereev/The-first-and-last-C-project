@@ -34,10 +34,11 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,17 +65,17 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(16, 82);
+            this.txtEmail.Location = new System.Drawing.Point(34, 142);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(394, 44);
+            this.txtEmail.Size = new System.Drawing.Size(396, 44);
             this.txtEmail.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(16, 51);
+            this.label3.Location = new System.Drawing.Point(34, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 28);
             this.label3.TabIndex = 4;
@@ -82,6 +83,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnLogin);
             this.groupBox1.Controls.Add(this.label2);
@@ -96,15 +98,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Форма авторизации";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(336, 246);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 44);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(37)))), ((int)(((byte)(88)))));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(21, 267);
+            this.btnLogin.Location = new System.Drawing.Point(34, 355);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(391, 58);
+            this.btnLogin.Size = new System.Drawing.Size(195, 58);
             this.btnLogin.TabIndex = 7;
-            this.btnLogin.Text = "Вохд";
+            this.btnLogin.Text = "Вход";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -112,7 +124,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(18, 152);
+            this.label2.Location = new System.Drawing.Point(34, 204);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 28);
             this.label2.TabIndex = 6;
@@ -120,21 +132,23 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(18, 183);
+            this.txtPassword.Location = new System.Drawing.Point(34, 246);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(298, 44);
             this.txtPassword.TabIndex = 5;
             // 
-            // button1
+            // button2
             // 
-            this.button1.Location = new System.Drawing.Point(322, 183);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 44);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(37)))), ((int)(((byte)(88)))));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(235, 355);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(195, 58);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Регистрация";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Client
             // 
@@ -167,5 +181,6 @@
         private Label label2;
         private TextBox txtPassword;
         private Button button1;
+        private Button button2;
     }
 }
