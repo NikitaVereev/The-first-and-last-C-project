@@ -10,7 +10,7 @@ namespace IS
 {
     internal class DataBase
     {
-        SqlConnection sqlConnection = new SqlConnection(@"Data Source=LAPTOP-RVTI2EHO\MSSQLSERVER;Initial Catalog=ContractDb;Integrated Security=True");
+        SqlConnection sqlConnection = new SqlConnection(@"Data Source=LAPTOP-RVTI2EHO;Initial Catalog=ContractDb;Integrated Security=True;ENCRYPT=True;TrustServerCertificate=True");
         
         public void openConnection()
         {
