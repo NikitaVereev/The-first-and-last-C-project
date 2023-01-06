@@ -77,5 +77,108 @@ namespace IS.Forms
             CreateColums();
             RefrestDataGrid(dataGridView1);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selecedRow = e.RowIndex;
+            if(e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[selecedRow];
+                textBox2.Text = row.Cells[0].Value.ToString();
+                textBox3.Text = row.Cells[1].Value.ToString();
+                textBox4.Text = row.Cells[2].Value.ToString();
+                textBox5.Text = row.Cells[3].Value.ToString();
+                textBox7.Text = row.Cells[4].Value.ToString();
+                textBox6.Text = row.Cells[5].Value.ToString();
+                
+            }
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_new_Click(object sender, EventArgs e)
+        {
+            NewPost addFrm = new NewPost();
+            addFrm.Show();
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            RefrestDataGrid(dataGridView1);
+        }
+
+        private void Search(DataGridView dgw)
+        {
+            dgw.Rows.Clear();
+            string searchString = $"select * from posts where concat (id, type_of, count_of, title, content, price) like '%" + textBox1.Text + "%'";
+            
+            SqlCommand com = new SqlCommand(searchString, dataBase.getConnection());
+
+            dataBase.openConnection();
+
+            SqlDataReader read = com.ExecuteReader();
+
+            while(read.Read())
+            {
+                ReadSingleRow(dgw, read);
+            }
+
+            read.Close();
+        
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Search(dataGridView1);
+        }
+
+        private void Update()
+        {
+            dataBase.openConnection();
+
+            for(int index = 0; index < dataGridView1.Rows.Count; index++)
+            {
+                var rowState = (RowState)dataGridView1.Rows[index].Cells[6].Value;
+                if(rowState == RowState.Existed)
+                {
+                    continue;
+                }
+                if(rowState == RowState.Deleted)
+                {
+                    var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                    var deleteQuery = $"delete from posts where id = {id}";
+
+                    var command = new SqlCommand(deleteQuery, dataBase.getConnection());
+
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            dataBase.closeConnection();
+        }
+
+        private void DeleteRow()
+        {
+            int index = dataGridView1.CurrentCell.RowIndex;
+            dataGridView1.Rows[index].Visible= false;
+            if (dataGridView1.Rows[index].Cells[0].Value.ToString() == string.Empty)
+            {
+                dataGridView1.Rows[index].Cells[6].Value = RowState.Deleted;
+            }
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            DeleteRow();
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Update();
+        }
     }
 }

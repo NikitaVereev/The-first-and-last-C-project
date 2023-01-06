@@ -30,35 +30,36 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.btn_change = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_new = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_refresh = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -86,52 +87,62 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // groupBox2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(242, 92);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.btn_save);
+            this.groupBox2.Controls.Add(this.btn_change);
+            this.groupBox2.Controls.Add(this.btn_delete);
+            this.groupBox2.Controls.Add(this.btn_new);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Location = new System.Drawing.Point(934, 264);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(415, 425);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Управление";
             // 
-            // panel1
+            // btn_save
             // 
-            this.panel1.BackColor = System.Drawing.Color.Wheat;
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(17, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1350, 74);
-            this.panel1.TabIndex = 0;
+            this.btn_save.Font = new System.Drawing.Font("Segoe UI Black", 11.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_save.Location = new System.Drawing.Point(22, 326);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(387, 45);
+            this.btn_save.TabIndex = 3;
+            this.btn_save.Text = "Сохранить";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // label1
+            // btn_change
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(29, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(297, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Издательский дом ";
+            this.btn_change.Font = new System.Drawing.Font("Segoe UI Black", 11.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_change.Location = new System.Drawing.Point(22, 246);
+            this.btn_change.Name = "btn_change";
+            this.btn_change.Size = new System.Drawing.Size(387, 45);
+            this.btn_change.TabIndex = 2;
+            this.btn_change.Text = "Изменить";
+            this.btn_change.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // btn_delete
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 92);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(1350, 166);
-            this.dataGridView1.TabIndex = 1;
+            this.btn_delete.Font = new System.Drawing.Font("Segoe UI Black", 11.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_delete.Location = new System.Drawing.Point(22, 163);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(387, 45);
+            this.btn_delete.TabIndex = 1;
+            this.btn_delete.Text = "Удалить";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
-            // textBox1
+            // btn_new
             // 
-            this.textBox1.Location = new System.Drawing.Point(1074, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 27);
-            this.textBox1.TabIndex = 1;
+            this.btn_new.Font = new System.Drawing.Font("Segoe UI Black", 11.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_new.Location = new System.Drawing.Point(22, 78);
+            this.btn_new.Name = "btn_new";
+            this.btn_new.Size = new System.Drawing.Size(387, 45);
+            this.btn_new.TabIndex = 0;
+            this.btn_new.Text = "Новая публикация";
+            this.btn_new.UseVisualStyleBackColor = true;
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
             // groupBox1
             // 
@@ -155,56 +166,43 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Публикация";
             // 
-            // textBox2
+            // label7
             // 
-            this.textBox2.Location = new System.Drawing.Point(29, 68);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(353, 38);
-            this.textBox2.TabIndex = 0;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(29, 326);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 25);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Цена";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // label2
+            // textBox7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(29, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "id";
+            this.textBox7.Location = new System.Drawing.Point(415, 68);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(451, 322);
+            this.textBox7.TabIndex = 10;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
-            // label3
+            // label6
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(29, 111);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 25);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Тип материала";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(415, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 25);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Текст";
             // 
-            // textBox3
+            // textBox6
             // 
-            this.textBox3.Location = new System.Drawing.Point(29, 139);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(353, 38);
-            this.textBox3.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(29, 183);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(175, 25);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Количество копий";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(29, 211);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(353, 38);
-            this.textBox4.TabIndex = 4;
+            this.textBox6.Location = new System.Drawing.Point(29, 354);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(353, 36);
+            this.textBox6.TabIndex = 8;
             // 
             // label5
             // 
@@ -223,95 +221,116 @@
             this.textBox5.Size = new System.Drawing.Size(353, 38);
             this.textBox5.TabIndex = 6;
             // 
-            // label6
+            // label4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(29, 326);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 25);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Цена";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(29, 183);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(175, 25);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Количество копий";
             // 
-            // textBox6
+            // textBox4
             // 
-            this.textBox6.Location = new System.Drawing.Point(29, 354);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(353, 38);
-            this.textBox6.TabIndex = 8;
+            this.textBox4.Location = new System.Drawing.Point(29, 211);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(353, 38);
+            this.textBox4.TabIndex = 4;
             // 
-            // label7
+            // label3
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(411, 40);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 25);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Текст";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(29, 111);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(144, 25);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Тип материала";
             // 
-            // textBox7
+            // textBox3
             // 
-            this.textBox7.Location = new System.Drawing.Point(411, 68);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(449, 324);
-            this.textBox7.TabIndex = 10;
+            this.textBox3.Location = new System.Drawing.Point(29, 139);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(353, 38);
+            this.textBox3.TabIndex = 2;
             // 
-            // groupBox2
+            // label2
             // 
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI Black", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(934, 264);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(415, 425);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Управление";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(29, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 25);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "id";
             // 
-            // button1
+            // textBox2
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI Black", 11.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(22, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(387, 45);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Новая публикация";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBox2.Location = new System.Drawing.Point(29, 68);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(353, 38);
+            this.textBox2.TabIndex = 0;
             // 
-            // button2
+            // dataGridView1
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI Black", 11.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(22, 163);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(387, 45);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(17, 92);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(1350, 166);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // button3
+            // panel1
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI Black", 11.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(22, 246);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(387, 45);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Изменить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.panel1.BackColor = System.Drawing.Color.Wheat;
+            this.panel1.Controls.Add(this.btn_refresh);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(17, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1350, 74);
+            this.panel1.TabIndex = 0;
             // 
-            // button4
+            // btn_refresh
             // 
-            this.button4.Font = new System.Drawing.Font("Segoe UI Black", 11.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(22, 326);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(387, 45);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Сохранить";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_refresh.Location = new System.Drawing.Point(920, 22);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Size = new System.Drawing.Size(94, 29);
+            this.btn_refresh.TabIndex = 2;
+            this.btn_refresh.Text = "Обновить";
+            this.btn_refresh.UseVisualStyleBackColor = true;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1074, 27);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(258, 27);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(29, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(297, 38);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Издательский дом ";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1375, 697);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // NextForm
             // 
@@ -324,12 +343,12 @@
             this.Load += new System.EventHandler(this.NextForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -339,10 +358,10 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private GroupBox groupBox2;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button btn_save;
+        private Button btn_change;
+        private Button btn_delete;
+        private Button btn_new;
         private GroupBox groupBox1;
         private Label label7;
         private TextBox textBox7;
@@ -361,5 +380,6 @@
         private TextBox textBox1;
         private Label label1;
         private TabPage tabPage2;
+        private Button btn_refresh;
     }
 }
