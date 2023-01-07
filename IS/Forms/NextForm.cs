@@ -43,6 +43,16 @@ namespace IS.Forms
             
         }
 
+        private void ClearFields()
+        {
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
+            textBox7.Text = "";
+        }
+
         private void ReadSingleRow(DataGridView dgw, IDataRecord record)
         {
             dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetInt32(2), record.GetString(3), record.GetString(4), record.GetInt32(5), RowState.ModifiedNew);
@@ -156,6 +166,23 @@ namespace IS.Forms
 
                     command.ExecuteNonQuery();
                 }
+
+                if(rowState == RowState.Modified)
+                {
+                    var id = dataGridView1.Rows[index].Cells[0].Value.ToString();
+                    var type = dataGridView1.Rows[index].Cells[1].Value.ToString();
+                    var count = dataGridView1.Rows[index].Cells[2].Value.ToString();
+                    var title = dataGridView1.Rows[index].Cells[3].Value.ToString();
+                    var price = dataGridView1.Rows[index].Cells[4].Value.ToString();
+                    var text = dataGridView1.Rows[index].Cells[5].Value.ToString();
+
+                    var changeQuery = $"update posts set type_of = '{type}', count_of = '{count}', title = '{title}', price = '{price}', content = '{text}' where id = '{id}'";
+
+                    var command = new SqlCommand(changeQuery, dataBase.getConnection());
+                    command.ExecuteNonQuery();
+                }
+
+
             }
 
             dataBase.closeConnection();
@@ -169,16 +196,50 @@ namespace IS.Forms
             {
                 dataGridView1.Rows[index].Cells[6].Value = RowState.Deleted;
             }
+
+            dataGridView1.Rows[index].Cells[6].Value = RowState.Deleted;
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
             DeleteRow();
+            ClearFields();
         }
 
         private void btn_save_Click(object sender, EventArgs e)
         {
             Update();
+            ClearFields();
+        }
+
+        private void Change()
+        {
+            var selectedRowIndex = dataGridView1.CurrentCell.RowIndex;
+            var id = textBox2.Text;
+            var type = textBox3.Text;
+            var count = textBox4.Text;
+            var title = textBox5.Text;
+            int price;
+            var text = textBox7.Text;
+
+            if (dataGridView1.Rows[selectedRowIndex].Cells[0].Value.ToString() != string.Empty)
+            {
+                if(int.TryParse(textBox6.Text, out price))
+                {
+                    dataGridView1.Rows[selectedRowIndex].SetValues(id, type, count, title, price, text);
+                    dataGridView1.Rows[selectedRowIndex].Cells[6].Value = RowState.Modified;
+                }
+                else
+                {
+                    MessageBox.Show("Цена должна иметь числовой формат");
+                }
+            }
+        }
+
+        private void btn_change_Click(object sender, EventArgs e)
+        {
+            Change();
+            ClearFields();
         }
     }
 }
