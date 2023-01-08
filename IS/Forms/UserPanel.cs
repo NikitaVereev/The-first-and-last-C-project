@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,29 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using Microsoft.Data.SqlClient;
 
 namespace IS.Forms
 {
-    enum RowState
+    public partial class UserPanel : Form
     {
-        Existed,
-        New,
-        Modified,
-        ModifiedNew,
-        Deleted
-    }
-    public partial class NextForm : Form
-    {
-        DataBase dataBase = new DataBase();
-
-        int selecedRow;
-        
-        public NextForm()
+        public UserPanel()
         {
             InitializeComponent();
         }
+
+        DataBase dataBase = new DataBase();
+
+        int selecedRow;
+
+       
+
+
 
         private void CreateColums()
         {
@@ -40,7 +35,7 @@ namespace IS.Forms
             dataGridView1.Columns.Add("content", "Текст");
             dataGridView1.Columns.Add("price", "Цена");
             dataGridView1.Columns.Add("IsNew", String.Empty);
-            
+
         }
 
         private void ClearFields()
@@ -70,7 +65,7 @@ namespace IS.Forms
 
             SqlDataReader reader = command.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 ReadSingleRow(dgw, reader);
             }
@@ -84,6 +79,7 @@ namespace IS.Forms
 
         private void NextForm_Load(object sender, EventArgs e)
         {
+
             CreateColums();
             RefrestDataGrid(dataGridView1);
         }
@@ -91,7 +87,7 @@ namespace IS.Forms
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             selecedRow = e.RowIndex;
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[selecedRow];
                 textBox2.Text = row.Cells[0].Value.ToString();
@@ -100,7 +96,7 @@ namespace IS.Forms
                 textBox5.Text = row.Cells[3].Value.ToString();
                 textBox7.Text = row.Cells[4].Value.ToString();
                 textBox6.Text = row.Cells[5].Value.ToString();
-                
+
             }
 
         }
@@ -110,7 +106,7 @@ namespace IS.Forms
 
         }
 
-        private void btn_new_Click(object sender, EventArgs e)
+        private void btn_new_Click_1(object sender, EventArgs e)
         {
             NewPost addFrm = new NewPost();
             addFrm.Show();
@@ -125,20 +121,20 @@ namespace IS.Forms
         {
             dgw.Rows.Clear();
             string searchString = $"select * from posts where concat (id, type_of, count_of, title, content, price) like '%" + textBox1.Text + "%'";
-            
+
             SqlCommand com = new SqlCommand(searchString, dataBase.getConnection());
 
             dataBase.openConnection();
 
             SqlDataReader read = com.ExecuteReader();
 
-            while(read.Read())
+            while (read.Read())
             {
                 ReadSingleRow(dgw, read);
             }
 
             read.Close();
-        
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -150,14 +146,14 @@ namespace IS.Forms
         {
             dataBase.openConnection();
 
-            for(int index = 0; index < dataGridView1.Rows.Count; index++)
+            for (int index = 0; index < dataGridView1.Rows.Count; index++)
             {
                 var rowState = (RowState)dataGridView1.Rows[index].Cells[6].Value;
-                if(rowState == RowState.Existed)
+                if (rowState == RowState.Existed)
                 {
                     continue;
                 }
-                if(rowState == RowState.Deleted)
+                if (rowState == RowState.Deleted)
                 {
                     var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
                     var deleteQuery = $"delete from posts where id = {id}";
@@ -167,7 +163,7 @@ namespace IS.Forms
                     command.ExecuteNonQuery();
                 }
 
-                if(rowState == RowState.Modified)
+                if (rowState == RowState.Modified)
                 {
                     var id = dataGridView1.Rows[index].Cells[0].Value.ToString();
                     var type = dataGridView1.Rows[index].Cells[1].Value.ToString();
@@ -191,7 +187,7 @@ namespace IS.Forms
         private void DeleteRow()
         {
             int index = dataGridView1.CurrentCell.RowIndex;
-            dataGridView1.Rows[index].Visible= false;
+            dataGridView1.Rows[index].Visible = false;
             if (dataGridView1.Rows[index].Cells[0].Value.ToString() == string.Empty)
             {
                 dataGridView1.Rows[index].Cells[6].Value = RowState.Deleted;
@@ -224,7 +220,7 @@ namespace IS.Forms
 
             if (dataGridView1.Rows[selectedRowIndex].Cells[0].Value.ToString() != string.Empty)
             {
-                if(int.TryParse(textBox6.Text, out price))
+                if (int.TryParse(textBox6.Text, out price))
                 {
                     dataGridView1.Rows[selectedRowIndex].SetValues(id, type, count, title, price, text);
                     dataGridView1.Rows[selectedRowIndex].Cells[6].Value = RowState.Modified;
@@ -241,5 +237,22 @@ namespace IS.Forms
             Change();
             ClearFields();
         }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

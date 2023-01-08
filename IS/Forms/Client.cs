@@ -36,23 +36,35 @@ namespace IS
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
 
-            string querystring = $"select id_user, login_user, password_user from register where login_user = '{loginUser}' and password_user = '{passUserr}'";
+            string querystring = $"select id_user, login_user, password_user, is_admin from register where login_user = '{loginUser}' and password_user = '{passUserr}'";
             SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
             if(table.Rows.Count == 1)
             {
-                MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                NextForm frm1 = new NextForm();
+                if (loginUser == "admin" && passUserr == "admin")
+                {
+                    AdminPanel frm1 = new AdminPanel();
+                    this.Hide();
+                    frm1.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UserPanel frm1 = new UserPanel();
                 this.Hide();
                 frm1.ShowDialog();
                 this.Show();
+                }
+                
             }
             else
             {
                 MessageBox.Show("Такого аккаунта не существует!", "Аккаунта не существует!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
         }
 
         
@@ -66,20 +78,24 @@ namespace IS
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             DataTable table = new DataTable();
+
+            
 
             var loginUser = txtEmail.Text;
             var passUserr = txtPassword.Text;         
 
-            string querystring = $"insert into register(login_user, password_user) values('{loginUser}', '{passUserr}')";
+            string querystring = $"insert into register(login_user, password_user, is_admin) values('{loginUser}', '{passUserr}', 0)";
             SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
 
             dataBase.openConnection();
 
             if (command.ExecuteNonQuery() == 1)
             {
+                
                 MessageBox.Show("Аккаунт успешно создан!", "УСпешно!");
-                NextForm frm1 = new NextForm();
+                AdminPanel frm1 = new AdminPanel();
                 this.Hide();
                 frm1.ShowDialog();
                 this.Show();
@@ -98,7 +114,7 @@ namespace IS
 
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
-            string querystring = $"select id_user, login_user, password_user from register where login_user = '{loginUser}' and password_user = '{passUser}'";
+            string querystring = $"select id_user, login_user, password_user, is_admin from register where login_user = '{loginUser}' and password_user = '{passUser}'";
 
             SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
 

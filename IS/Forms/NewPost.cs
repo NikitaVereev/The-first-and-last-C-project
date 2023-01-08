@@ -34,11 +34,12 @@ namespace IS.Forms
             var count = textBox2.Text;
             var title = textBox3.Text;
             var text = textBox5.Text;
+            var author = textBox6.Text;
             int price;
 
             if(int.TryParse(textBox4.Text, out price) )
             {
-                var addQuery = $"insert into posts (type_of, count_of, title, content, price) values('{type}', '{count}', '{title}', '{text}', '{price}')" ;
+                var addQuery = $"insert into posts (type_of, count_of, title, content, price, author) values('{type}', '{count}', '{title}', '{text}', '{price}', '{author}')" ;
 
                 var command = new SqlCommand(addQuery, dataBase.getConnection());
                 command.ExecuteNonQuery();

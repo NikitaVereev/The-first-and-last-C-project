@@ -1,6 +1,6 @@
 ﻿namespace IS.Forms
 {
-    partial class NextForm
+    partial class AdminPanel
     {
         /// <summary>
         /// Required designer variable.
@@ -50,10 +50,13 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -147,6 +150,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.textBox8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.textBox7);
             this.groupBox1.Controls.Add(this.label6);
@@ -183,7 +188,7 @@
             this.textBox7.Location = new System.Drawing.Point(415, 68);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(451, 322);
+            this.textBox7.Size = new System.Drawing.Size(451, 255);
             this.textBox7.TabIndex = 10;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
@@ -290,6 +295,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Wheat;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btn_refresh);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label1);
@@ -297,6 +303,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1350, 74);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(495, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 29);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Админ панель";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_refresh
             // 
@@ -336,13 +352,30 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // NextForm
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(415, 352);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(451, 38);
+            this.textBox8.TabIndex = 12;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(415, 324);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 25);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Автор";
+            // 
+            // AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1383, 730);
             this.Controls.Add(this.tabControl1);
-            this.Name = "NextForm";
+            this.Name = "AdminPanel";
             this.Text = "NextForm";
             this.Load += new System.EventHandler(this.NextForm_Load);
             this.tabControl1.ResumeLayout(false);
@@ -385,5 +418,8 @@
         private Label label1;
         private TabPage tabPage2;
         private Button btn_refresh;
+        private Button button1;
+        private Label label8;
+        private TextBox textBox8;
     }
 }
