@@ -9,17 +9,28 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace IS.Forms
 {
     public partial class NewPost : Form
     {
         DataBase dataBase = new DataBase();
-        public NewPost()
+
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        public NewPost(string loginUser)
         {
             InitializeComponent();
             StartPosition= FormStartPosition.CenterScreen;
+            textBox6.Text = loginUser;
         }
+       
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -35,6 +46,7 @@ namespace IS.Forms
             var title = textBox3.Text;
             var text = textBox5.Text;
             var author = textBox6.Text;
+        
             int price;
 
             if(int.TryParse(textBox4.Text, out price) )

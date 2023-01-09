@@ -18,7 +18,7 @@ namespace IS
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-      
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace IS
             {
                 if (loginUser == "admin" && passUserr == "admin")
                 {
-                    AdminPanel frm1 = new AdminPanel();
+                    AdminPanel frm1 = new AdminPanel(loginUser);
                     this.Hide();
                     frm1.ShowDialog();
                     this.Show();
@@ -53,7 +53,7 @@ namespace IS
                 else
                 {
 MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                UserPanel frm1 = new UserPanel();
+                UserPanel frm1 = new UserPanel(loginUser);
                 this.Hide();
                 frm1.ShowDialog();
                 this.Show();
@@ -73,38 +73,45 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+           
         }
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
 
             DataTable table = new DataTable();
-
             
 
             var loginUser = txtEmail.Text;
-            var passUserr = txtPassword.Text;         
+            var passUserr = txtPassword.Text;
 
-            string querystring = $"insert into register(login_user, password_user, is_admin) values('{loginUser}', '{passUserr}', 0)";
-            SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
+            
 
-            dataBase.openConnection();
+            
+            string querystring =  $"insert into register(login_user, password_user, is_admin) values('{loginUser}', '{passUserr}', 0)";
+                SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
 
-            if (command.ExecuteNonQuery() == 1)
-            {
-                
-                MessageBox.Show("Аккаунт успешно создан!", "УСпешно!");
-                AdminPanel frm1 = new AdminPanel();
-                this.Hide();
-                frm1.ShowDialog();
-                this.Show();
-            }
-            else
-            {
-                MessageBox.Show("Аккаунт не создан!");
-            }
-            dataBase.closeConnection();
+                dataBase.openConnection();
+
+                if (command.ExecuteNonQuery() == 1)
+                {
+
+                    MessageBox.Show("Аккаунт успешно создан!", "УСпешно!");
+                    AdminPanel frm1 = new AdminPanel(loginUser);
+                    this.Hide();
+                    frm1.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Аккаунт не создан!");
+                }
+                dataBase.closeConnection();
+            
+
+
         }
 
         private Boolean checkuser()

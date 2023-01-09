@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,21 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace IS.Forms
 {
+    
     public partial class UserPanel : Form
     {
-        public UserPanel()
-        {
-            InitializeComponent();
-        }
+
 
         DataBase dataBase = new DataBase();
 
         int selecedRow;
 
-       
+        public UserPanel(string loginUser)
+        {
+
+            InitializeComponent();
+            textBox8.Text = loginUser;
+        }
+
+
 
 
 
@@ -34,6 +40,7 @@ namespace IS.Forms
             dataGridView1.Columns.Add("title", "Название");
             dataGridView1.Columns.Add("content", "Текст");
             dataGridView1.Columns.Add("price", "Цена");
+            dataGridView1.Columns.Add("author", "Автор");
             dataGridView1.Columns.Add("IsNew", String.Empty);
 
         }
@@ -46,11 +53,12 @@ namespace IS.Forms
             textBox5.Text = "";
             textBox6.Text = "";
             textBox7.Text = "";
+            textBox8.Text = "";
         }
 
         private void ReadSingleRow(DataGridView dgw, IDataRecord record)
         {
-            dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetInt32(2), record.GetString(3), record.GetString(4), record.GetInt32(5), RowState.ModifiedNew);
+            dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetInt32(2), record.GetString(3), record.GetString(4), record.GetInt32(5), record.GetString(6), RowState.ModifiedNew);
         }
 
         private void RefrestDataGrid(DataGridView dgw)
@@ -96,6 +104,7 @@ namespace IS.Forms
                 textBox5.Text = row.Cells[3].Value.ToString();
                 textBox7.Text = row.Cells[4].Value.ToString();
                 textBox6.Text = row.Cells[5].Value.ToString();
+                textBox8.Text = row.Cells[6].Value.ToString();
 
             }
 
@@ -106,9 +115,10 @@ namespace IS.Forms
 
         }
 
-        private void btn_new_Click_1(object sender, EventArgs e)
+        private void btn_new_Click(object sender, EventArgs e)
         {
-            NewPost addFrm = new NewPost();
+            var loginUser = textBox8.Text;
+            NewPost addFrm = new NewPost(loginUser);
             addFrm.Show();
         }
 
@@ -120,7 +130,7 @@ namespace IS.Forms
         private void Search(DataGridView dgw)
         {
             dgw.Rows.Clear();
-            string searchString = $"select * from posts where concat (id, type_of, count_of, title, content, price) like '%" + textBox1.Text + "%'";
+            string searchString = $"select * from posts where concat (id_post, type_of, count_of, title, content, price, author) like '%" + textBox1.Text + "%'";
 
             SqlCommand com = new SqlCommand(searchString, dataBase.getConnection());
 
@@ -148,7 +158,7 @@ namespace IS.Forms
 
             for (int index = 0; index < dataGridView1.Rows.Count; index++)
             {
-                var rowState = (RowState)dataGridView1.Rows[index].Cells[6].Value;
+                var rowState = (RowState)dataGridView1.Rows[index].Cells[7].Value;
                 if (rowState == RowState.Existed)
                 {
                     continue;
@@ -156,7 +166,7 @@ namespace IS.Forms
                 if (rowState == RowState.Deleted)
                 {
                     var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
-                    var deleteQuery = $"delete from posts where id = {id}";
+                    var deleteQuery = $"delete from posts where id_post = {id}";
 
                     var command = new SqlCommand(deleteQuery, dataBase.getConnection());
 
@@ -171,8 +181,9 @@ namespace IS.Forms
                     var title = dataGridView1.Rows[index].Cells[3].Value.ToString();
                     var price = dataGridView1.Rows[index].Cells[4].Value.ToString();
                     var text = dataGridView1.Rows[index].Cells[5].Value.ToString();
+                    var author = dataGridView1.Rows[index].Cells[6].Value.ToString();
 
-                    var changeQuery = $"update posts set type_of = '{type}', count_of = '{count}', title = '{title}', price = '{price}', content = '{text}' where id = '{id}'";
+                    var changeQuery = $"update posts set type_of = '{type}', count_of = '{count}', title = '{title}', price = '{price}', content = '{text}' where id = '{id}', author = '{author}'";
 
                     var command = new SqlCommand(changeQuery, dataBase.getConnection());
                     command.ExecuteNonQuery();
@@ -190,10 +201,10 @@ namespace IS.Forms
             dataGridView1.Rows[index].Visible = false;
             if (dataGridView1.Rows[index].Cells[0].Value.ToString() == string.Empty)
             {
-                dataGridView1.Rows[index].Cells[6].Value = RowState.Deleted;
+                dataGridView1.Rows[index].Cells[7].Value = RowState.Deleted;
             }
 
-            dataGridView1.Rows[index].Cells[6].Value = RowState.Deleted;
+            dataGridView1.Rows[index].Cells[7].Value = RowState.Deleted;
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -217,13 +228,14 @@ namespace IS.Forms
             var title = textBox5.Text;
             int price;
             var text = textBox7.Text;
+            var author = textBox8.Text;
 
             if (dataGridView1.Rows[selectedRowIndex].Cells[0].Value.ToString() != string.Empty)
             {
                 if (int.TryParse(textBox6.Text, out price))
                 {
-                    dataGridView1.Rows[selectedRowIndex].SetValues(id, type, count, title, price, text);
-                    dataGridView1.Rows[selectedRowIndex].Cells[6].Value = RowState.Modified;
+                    dataGridView1.Rows[selectedRowIndex].SetValues(id, type, count, title, price, text, author);
+                    dataGridView1.Rows[selectedRowIndex].Cells[7].Value = RowState.Modified;
                 }
                 else
                 {
@@ -247,12 +259,5 @@ namespace IS.Forms
         {
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }

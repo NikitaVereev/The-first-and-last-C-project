@@ -59,6 +59,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -106,7 +108,6 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Опубликовать";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -189,7 +190,7 @@
             this.textBox7.Location = new System.Drawing.Point(415, 68);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(451, 322);
+            this.textBox7.Size = new System.Drawing.Size(451, 255);
             this.textBox7.TabIndex = 10;
             // 
             // label6
@@ -236,7 +237,7 @@
             this.btn_new.TabIndex = 0;
             this.btn_new.Text = "Новая публикация";
             this.btn_new.UseVisualStyleBackColor = true;
-            this.btn_new.Click += new System.EventHandler(this.btn_new_Click_1);
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
             // label4
             // 
@@ -359,6 +360,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.textBox8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.textBox7);
             this.groupBox1.Controls.Add(this.label6);
@@ -378,6 +381,23 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Публикация";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(415, 354);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(451, 38);
+            this.textBox8.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(415, 326);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 25);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Автор";
             // 
             // UserPanel
             // 
@@ -438,5 +458,7 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private GroupBox groupBox1;
+        private TextBox textBox8;
+        private Label label9;
     }
 }

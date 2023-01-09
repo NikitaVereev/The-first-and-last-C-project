@@ -28,11 +28,14 @@ namespace IS.Forms
 
         int selecedRow;
         
-        public AdminPanel()
+        public AdminPanel(string loginUser)
         {
            
             InitializeComponent();
+            textBox9.Text = loginUser;
         }
+
+        
 
         
 
@@ -48,6 +51,19 @@ namespace IS.Forms
             dataGridView1.Columns.Add("IsNew", String.Empty);
             
         }
+        private void CreateColums2()
+        {
+            dataGridView2.Columns.Add("id", "id");
+            dataGridView2.Columns.Add("type_of", "Тип материала");
+            dataGridView2.Columns.Add("count_of", "Количество");
+            dataGridView2.Columns.Add("title", "Название");
+            dataGridView2.Columns.Add("content", "Текст");
+            dataGridView2.Columns.Add("price", "Цена");
+            dataGridView2.Columns.Add("author", "Автор");
+            dataGridView2.Columns.Add("IsNew", String.Empty);
+
+        }
+
 
         private void ClearFields()
         {
@@ -83,6 +99,24 @@ namespace IS.Forms
             }
             reader.Close();
         }
+        private void AgreedDataGrid(DataGridView dgw)
+        {
+            dgw.Rows.Clear();
+
+            string queryString = $"select * from agreed";
+
+            SqlCommand command = new SqlCommand(queryString, dataBase.getConnection());
+
+            dataBase.openConnection();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ReadSingleRow(dgw, reader);
+            }
+            reader.Close();
+        }
 
         private void label7_Click(object sender, EventArgs e)
         {
@@ -94,6 +128,8 @@ namespace IS.Forms
             
             CreateColums();
             RefrestDataGrid(dataGridView1);
+            CreateColums2();
+            AgreedDataGrid(dataGridView2);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -121,13 +157,40 @@ namespace IS.Forms
 
         private void btn_new_Click(object sender, EventArgs e)
         {
-            NewPost addFrm = new NewPost();
-            addFrm.Show();
+            dataBase.openConnection();
+            var id = textBox2.Text;
+            int.Parse(id.ToString());
+            var type = textBox3.Text;
+            var count = textBox4.Text;
+            var title = textBox5.Text;
+            var text = textBox7.Text;
+            var author = textBox8.Text;
+
+            int price;
+
+            if (int.TryParse(textBox4.Text, out price))
+            {
+                var addQuery = $"insert into agreed (id_post, type_of, count_of, title, content, price, author) select id_post, type_of, count_of, title, content, price, author from posts where author = '{author}' and content = '{text}'" +
+                $"delete from posts where author = '{author}' and content = '{text}'";
+                   
+
+                var command = new SqlCommand(addQuery, dataBase.getConnection());
+                command.ExecuteNonQuery();
+
+                MessageBox.Show("Публикация успешно опубликована", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else
+            {
+                MessageBox.Show("Где-то произошла ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            dataBase.closeConnection();
         }
 
         private void btn_refresh_Click(object sender, EventArgs e)
         {
             RefrestDataGrid(dataGridView1);
+            AgreedDataGrid(dataGridView2);
         }
 
         private void Search(DataGridView dgw)
@@ -186,7 +249,7 @@ namespace IS.Forms
                     var text = dataGridView1.Rows[index].Cells[5].Value.ToString();
                     var author = dataGridView1.Rows[index].Cells[6].Value.ToString();
 
-                    var changeQuery = $"update posts set type_of = '{type}', count_of = '{count}', title = '{title}', price = '{price}', content = '{text}' where id = '{id}', author = '{author}'";
+                    var changeQuery = $"update posts set type_of = '{type}', count_of = '{count}', title = '{title}', price = '{price}', content = '{text}' , author = '{author}' where id = '{id}'";
 
                     var command = new SqlCommand(changeQuery, dataBase.getConnection());
                     command.ExecuteNonQuery();
@@ -212,6 +275,7 @@ namespace IS.Forms
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
+            dataGridView2.Enabled = false;
             DeleteRow();
             ClearFields();
         }
@@ -261,6 +325,29 @@ namespace IS.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            selecedRow = e.RowIndex;
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView2.Rows[selecedRow];
+                textBox2.Text = row.Cells[0].Value.ToString();
+                textBox3.Text = row.Cells[1].Value.ToString();
+                textBox4.Text = row.Cells[2].Value.ToString();
+                textBox5.Text = row.Cells[3].Value.ToString();
+                textBox7.Text = row.Cells[4].Value.ToString();
+                textBox6.Text = row.Cells[5].Value.ToString();
+                textBox8.Text = row.Cells[6].Value.ToString();
+
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
