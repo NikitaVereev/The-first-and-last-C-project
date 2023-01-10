@@ -26,6 +26,7 @@ namespace IS.Forms
 
             InitializeComponent();
             textBox8.Text = loginUser;
+            groupBox1.Visible= false;
         }
 
 
@@ -127,30 +128,9 @@ namespace IS.Forms
             RefrestDataGrid(dataGridView1);
         }
 
-        private void Search(DataGridView dgw)
-        {
-            dgw.Rows.Clear();
-            string searchString = $"select * from posts where concat (id_post, type_of, count_of, title, content, price, author) like '%" + textBox1.Text + "%'";
+       
 
-            SqlCommand com = new SqlCommand(searchString, dataBase.getConnection());
-
-            dataBase.openConnection();
-
-            SqlDataReader read = com.ExecuteReader();
-
-            while (read.Read())
-            {
-                ReadSingleRow(dgw, read);
-            }
-
-            read.Close();
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            Search(dataGridView1);
-        }
+        
 
         private void Update()
         {

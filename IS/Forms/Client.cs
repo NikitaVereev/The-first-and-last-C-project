@@ -87,7 +87,10 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
             var loginUser = txtEmail.Text;
             var passUserr = txtPassword.Text;
 
-            
+            if (checkuser())
+            {
+                return;
+            }
 
             
             string querystring =  $"insert into register(login_user, password_user, is_admin) values('{loginUser}', '{passUserr}', 0)";
@@ -99,7 +102,7 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
                 {
 
                     MessageBox.Show("Аккаунт успешно создан!", "УСпешно!");
-                    AdminPanel frm1 = new AdminPanel(loginUser);
+                    UserPanel frm1 = new UserPanel(loginUser);
                     this.Hide();
                     frm1.ShowDialog();
                     this.Show();
