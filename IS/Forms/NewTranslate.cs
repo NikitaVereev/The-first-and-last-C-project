@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,13 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using Microsoft.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace IS.Forms
 {
-    public partial class NewPost : Form
+    public partial class NewTranslate : Form
     {
         DataBase dataBase = new DataBase();
 
@@ -24,13 +23,13 @@ namespace IS.Forms
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
-        public NewPost(string loginUser)
+        public NewTranslate(string loginUser)
         {
             InitializeComponent();
-            StartPosition= FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterScreen;
             textBox6.Text = loginUser;
         }
-       
+
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -41,24 +40,27 @@ namespace IS.Forms
         {
             dataBase.openConnection();
 
-            var type = textBox1.Text;
-            var count = textBox2.Text;
-            var title = textBox3.Text;
-            var text = textBox5.Text;
-            var author = textBox6.Text;
-        
+            var ann = textBox1.Text;
+            var syn = textBox2.Text;
+            var tran = textBox3.Text;
+            var tit = textBox4.Text;
+            var or_a = textBox5.Text;
+            var or_l = textBox6.Text;
+            var pri = textBox7.Text;
             int price;
 
-            if(int.TryParse(textBox4.Text, out price) )
+            var count = textBox9.Text;
+
+            if (int.TryParse(textBox8.Text, out price))
             {
-                var addQuery = $"insert into posts (type_of, count_of, title, content, price, author, id_user) values('{type}', '{count}', '{title}', '{text}', '{price}', '{author}', '{DataStorage.UserLogin}')" ;
+                var addQuery = $"insert into translates (annotation, synopsis, trans, title, original_author, original_language, privilege, price, count_of, id_user) values('{ann}','{syn}', '{tran}','{tit}','{or_a}', '{or_l}', '{pri}', '{price}', '{count}', '{DataStorage.UserLogin}')";
                 SqlCommand command = new SqlCommand(addQuery, dataBase.getConnection());
                 dataBase.openConnection();
 
                 command.ExecuteNonQuery();
                 dataBase.closeConnection();
 
-                MessageBox.Show("Публикация успешно создана", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Перевод успешно создана", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             else
@@ -73,16 +75,16 @@ namespace IS.Forms
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click_2(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
 
-       
+        
     }
 }

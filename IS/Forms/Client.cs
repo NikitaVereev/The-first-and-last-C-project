@@ -71,7 +71,7 @@ namespace IS
                 else
                 {
 MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    NewPost frm1 = new NewPost(loginUser);
+                    UserPanel frm1 = new UserPanel(loginUser);
                     this.Hide();
                     frm1.ShowDialog();
                     this.Show();
@@ -130,7 +130,7 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
                 {
 
                     MessageBox.Show("Аккаунт успешно создан!", "УСпешно!");
-                    NewPost frm1 = new NewPost(loginUser);
+                    UserPanel frm1 = new UserPanel(loginUser);
                     this.Hide();
                     frm1.ShowDialog();
                     this.Show();

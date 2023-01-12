@@ -239,5 +239,12 @@ namespace IS.Forms
         {
 
         }
+
+        private void btn_delete_Click_1(object sender, EventArgs e)
+        {
+            var loginUser = textBox8.Text;
+            NewTranslate addFrm = new NewTranslate(loginUser);
+            addFrm.Show();
+        }
     }
 }
