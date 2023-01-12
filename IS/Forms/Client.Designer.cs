@@ -34,13 +34,16 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -68,7 +71,7 @@
             this.txtEmail.Location = new System.Drawing.Point(34, 142);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(396, 44);
+            this.txtEmail.Size = new System.Drawing.Size(425, 44);
             this.txtEmail.TabIndex = 3;
             // 
             // label3
@@ -83,8 +86,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnLogin);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtPassword);
@@ -93,10 +96,21 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(754, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(451, 444);
+            this.groupBox1.Size = new System.Drawing.Size(524, 444);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Форма авторизации";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(338, 253);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(121, 32);
+            this.checkBox1.TabIndex = 10;
+            this.checkBox1.Text = "показать";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // button2
             // 
@@ -109,16 +123,6 @@
             this.button2.Text = "Регистрация";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(336, 246);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 44);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnLogin
             // 
@@ -150,12 +154,35 @@
             this.txtPassword.Size = new System.Drawing.Size(298, 44);
             this.txtPassword.TabIndex = 5;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Location = new System.Drawing.Point(30, 107);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(250, 234);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Требование к паролю";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(6, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(238, 165);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Пароль должен содержать\\n большие и маленькие буквы, цыфры, спец-символы(!@#$%^&*" +
+    "-), а также иметь длинну, превышающую 8 символов. Это всё сделано ради вашей без" +
+    "опасности";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1332, 660);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -166,6 +193,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,7 +208,9 @@
         private Button btnLogin;
         private Label label2;
         private TextBox txtPassword;
-        private Button button1;
         private Button button2;
+        private CheckBox checkBox1;
+        private GroupBox groupBox2;
+        private Label label4;
     }
 }

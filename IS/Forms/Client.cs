@@ -4,6 +4,7 @@ using IS.Forms;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace IS
 {
@@ -33,11 +34,28 @@ namespace IS
            var loginUser = txtEmail.Text;
             var passUserr = txtPassword.Text;
 
+           
+
+            string querystring = $"select id_user, login_user, password_user, is_admin from register where login_user = '{loginUser}' and password_user = '{passUserr}'";
+            var queryGetId = $"select id_user from register where login_user = '{loginUser}'";
+
+            var commandGetId = new SqlCommand(queryGetId, dataBase.getConnection());
+
+            dataBase.openConnection();
+            SqlDataReader reader = commandGetId.ExecuteReader();
+            while (reader.Read())
+            {
+                DataStorage.UserLogin = reader[0].ToString();
+            }
+            reader.Close();
+            
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
 
-            string querystring = $"select id_user, login_user, password_user, is_admin from register where login_user = '{loginUser}' and password_user = '{passUserr}'";
             SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
+
+            
+
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
@@ -53,10 +71,10 @@ namespace IS
                 else
                 {
 MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                UserPanel frm1 = new UserPanel(loginUser);
-                this.Hide();
-                frm1.ShowDialog();
-                this.Show();
+                    NewPost frm1 = new NewPost(loginUser);
+                    this.Hide();
+                    frm1.ShowDialog();
+                    this.Show();
                 }
                 
             }
@@ -82,6 +100,10 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
         {
 
             DataTable table = new DataTable();
+
+            MessageBoxButtons btn = MessageBoxButtons.OK;
+            MessageBoxIcon ico = MessageBoxIcon.Information;
+            string caption = "Дата сохранения";
             
 
             var loginUser = txtEmail.Text;
@@ -92,6 +114,12 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
                 return;
             }
 
+            if(!Regex.IsMatch(txtPassword.Text, "(?=.*?[A-Z])(?=.*?[a-z])(?=.*[0-9])(?=.*?[#?!@$%^&*-]).{8,}"))
+            {
+                MessageBox.Show("Пожалуйста, введите пароль", caption, btn, ico);
+                return;
+            }
+            
             
             string querystring =  $"insert into register(login_user, password_user, is_admin) values('{loginUser}', '{passUserr}', 0)";
                 SqlCommand command = new SqlCommand(querystring, dataBase.getConnection());
@@ -102,11 +130,14 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
                 {
 
                     MessageBox.Show("Аккаунт успешно создан!", "УСпешно!");
-                    UserPanel frm1 = new UserPanel(loginUser);
+                    NewPost frm1 = new NewPost(loginUser);
                     this.Hide();
                     frm1.ShowDialog();
                     this.Show();
-                }
+                
+                
+                
+            }
                 else
                 {
                     MessageBox.Show("Аккаунт не создан!");
@@ -143,7 +174,25 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
             }
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked == true) {
+                txtPassword.UseSystemPasswordChar = true;
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = false;
+            }
+        }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

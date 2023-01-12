@@ -51,10 +51,12 @@ namespace IS.Forms
 
             if(int.TryParse(textBox4.Text, out price) )
             {
-                var addQuery = $"insert into posts (type_of, count_of, title, content, price, author) values('{type}', '{count}', '{title}', '{text}', '{price}', '{author}')" ;
+                var addQuery = $"insert into posts (type_of, count_of, title, content, price, author, id_user) values('{type}', '{count}', '{title}', '{text}', '{price}', '{author}', '{DataStorage.UserLogin}')" ;
+                SqlCommand command = new SqlCommand(addQuery, dataBase.getConnection());
+                dataBase.openConnection();
 
-                var command = new SqlCommand(addQuery, dataBase.getConnection());
                 command.ExecuteNonQuery();
+                dataBase.closeConnection();
 
                 MessageBox.Show("Публикация успешно создана", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -64,6 +66,16 @@ namespace IS.Forms
                 MessageBox.Show("Где-то произошла ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             dataBase.closeConnection();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
