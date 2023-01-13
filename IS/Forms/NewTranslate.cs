@@ -85,6 +85,14 @@ namespace IS.Forms
 
         }
 
-        
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

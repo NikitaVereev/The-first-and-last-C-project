@@ -83,6 +83,9 @@ namespace IS.Forms
 
         }
 
-       
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
