@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics;
 
 namespace IS.Forms
 {
@@ -318,6 +320,53 @@ namespace IS.Forms
             }
         }
 
-        
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+            if(textBox1.Text != "" && textBox9.Text != "")
+            {
+                dataBase.openConnection();
+                var email = textBox1.Text;
+                var password = textBox9.Text;
+                var changeQuery = $"update register set login_user = '{email}', password_user = '{password}' where id_user = '{DataStorage.UserLogin}'";
+
+                var command = new SqlCommand(changeQuery, dataBase.getConnection());
+                command.ExecuteNonQuery();
+                dataBase.closeConnection();
+                MessageBox.Show("Вы успешно обновили свои данные");
+            }
+            else
+            {
+                MessageBox.Show("Вы не заполнили все поля", "Предупреждение");
+            }
+
+            
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if(textBox14.Text != "" && textBox16.Text != "" && textBox15.Text != "")
+            {
+                var card_n = textBox14.Text;
+                var card_d = textBox16.Text;
+                var card_cvv = textBox15.Text;
+                var changeQuery = $"insert into user_card(card_number, cart_date, card_cvv, id_user) values('{card_n}', '{card_d}', '{card_cvv}', '{DataStorage.UserLogin}' ) ";
+                var command = new SqlCommand(changeQuery, dataBase.getConnection());
+                command.ExecuteNonQuery();
+                dataBase.closeConnection();
+                MessageBox.Show("Вы успешно добавили карту");
+            }
+            else
+            {
+                MessageBox.Show("Вы не заполнили все поля", "Предупреждение");
+            }
+
+        }
     }
 }

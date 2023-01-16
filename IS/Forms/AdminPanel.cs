@@ -38,7 +38,7 @@ namespace IS.Forms
         private void CreateColums()
         {
             dataGridView1.Columns.Add("id", "id");
-            dataGridView1.Columns.Add("type_of", "Тип материала");
+            dataGridView1.Columns.Add("type_of", "Количество страниц");
             dataGridView1.Columns.Add("count_of", "Количество");
             dataGridView1.Columns.Add("title", "Название");
             dataGridView1.Columns.Add("content", "Текст");
@@ -50,7 +50,7 @@ namespace IS.Forms
         private void CreateColums2()
         {
             dataGridView2.Columns.Add("id", "id");
-            dataGridView2.Columns.Add("type_of", "Тип материала");
+            dataGridView2.Columns.Add("type_of", "Количество страниц");
             dataGridView2.Columns.Add("count_of", "Количество");
             dataGridView2.Columns.Add("title", "Название");
             dataGridView2.Columns.Add("content", "Текст");

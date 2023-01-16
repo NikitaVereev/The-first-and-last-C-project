@@ -86,6 +86,7 @@ namespace IS.Forms
             this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(353, 30);
             this.textBox7.TabIndex = 10;
             // 
@@ -105,6 +106,7 @@ namespace IS.Forms
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(847, 533);
             this.textBox5.TabIndex = 6;
             // 
@@ -114,6 +116,7 @@ namespace IS.Forms
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(621, 233);
             this.textBox3.TabIndex = 2;
             // 
@@ -195,6 +198,7 @@ namespace IS.Forms
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(353, 30);
             this.textBox6.TabIndex = 8;
             // 
@@ -214,6 +218,7 @@ namespace IS.Forms
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(621, 263);
             this.textBox4.TabIndex = 4;
             // 
@@ -247,6 +252,7 @@ namespace IS.Forms
             this.textBox2.Location = new System.Drawing.Point(30, 60);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(116, 38);
             this.textBox2.TabIndex = 0;
             // 
@@ -312,6 +318,7 @@ namespace IS.Forms
             this.textBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox13.Multiline = true;
             this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
             this.textBox13.Size = new System.Drawing.Size(156, 38);
             this.textBox13.TabIndex = 18;
             // 
@@ -330,6 +337,7 @@ namespace IS.Forms
             this.textBox10.Location = new System.Drawing.Point(31, 253);
             this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(189, 38);
             this.textBox10.TabIndex = 16;
             // 
@@ -349,6 +357,7 @@ namespace IS.Forms
             this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(352, 30);
             this.textBox11.TabIndex = 14;
             // 
@@ -367,6 +376,7 @@ namespace IS.Forms
             this.textBox8.Location = new System.Drawing.Point(30, 186);
             this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(353, 38);
             this.textBox8.TabIndex = 12;
             // 

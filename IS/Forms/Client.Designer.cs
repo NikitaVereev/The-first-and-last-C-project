@@ -84,9 +84,9 @@ namespace IS
             this.label3.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold);
             this.label3.Location = new System.Drawing.Point(34, 82);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(222, 28);
+            this.label3.Size = new System.Drawing.Size(73, 28);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Имя или псевдоним";
+            this.label3.Text = "E-mail";
             // 
             // groupBox1
             // 

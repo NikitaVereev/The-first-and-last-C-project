@@ -48,6 +48,13 @@ namespace IS.Forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+
+            var getPrice = textBox4.Text;
+
+            Card addFrm = new Card(getPrice);
+            addFrm.Show();
+            /*
+            
             dataBase.openConnection();
 
             var type = textBox1.Text;
@@ -75,6 +82,7 @@ namespace IS.Forms
                 MessageBox.Show("Где-то произошла ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             dataBase.closeConnection();
+            */
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -146,6 +154,11 @@ namespace IS.Forms
             {
                 e.Handled = true;
             }
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

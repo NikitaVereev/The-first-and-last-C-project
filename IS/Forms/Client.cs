@@ -122,6 +122,13 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
                 return;
             }
 
+            if(!Regex.IsMatch(txtEmail.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+            {
+                MessageBox.Show("Пожалуйста, введите почту правильно", caption, btn, ico);
+                txtEmail.Select();
+                return;
+            }
+
             if(!Regex.IsMatch(txtPassword.Text, "(?=.*?[A-Z])(?=.*?[a-z])(?=.*[0-9])(?=.*?[#?!@$%^&*-]).{8,}"))
             {
                 MessageBox.Show("Пожалуйста, введите пароль", caption, btn, ico);
@@ -205,16 +212,12 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
        
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-
+             
         }
 
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char l = e.KeyChar;
-            if((l < 'А' || l > 'я') && (l < 'A' || l > 'z') && l != '\b' && l != '.')
-            {
-                e.Handled = true;
-            }
+            
         }
     }
 }

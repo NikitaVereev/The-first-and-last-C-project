@@ -247,6 +247,7 @@ namespace IS.Forms
             this.textBox8.Location = new System.Drawing.Point(34, 380);
             this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(451, 38);
             this.textBox8.TabIndex = 12;
             // 
@@ -254,7 +255,7 @@ namespace IS.Forms
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(29, 170);
+            this.label7.Location = new System.Drawing.Point(29, 229);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 25);
             this.label7.TabIndex = 11;
@@ -273,10 +274,11 @@ namespace IS.Forms
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(29, 192);
+            this.textBox6.Location = new System.Drawing.Point(29, 256);
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(353, 30);
             this.textBox6.TabIndex = 8;
             // 
@@ -286,6 +288,7 @@ namespace IS.Forms
             this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(795, 237);
             this.textBox7.TabIndex = 10;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
@@ -305,6 +308,7 @@ namespace IS.Forms
             this.textBox5.Location = new System.Drawing.Point(29, 315);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(353, 38);
             this.textBox5.TabIndex = 6;
             // 
@@ -323,6 +327,7 @@ namespace IS.Forms
             this.textBox4.Location = new System.Drawing.Point(30, 122);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(353, 38);
             this.textBox4.TabIndex = 4;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
@@ -331,17 +336,18 @@ namespace IS.Forms
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(29, 226);
+            this.label3.Location = new System.Drawing.Point(29, 162);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 25);
+            this.label3.Size = new System.Drawing.Size(193, 25);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Тип материала";
+            this.label3.Text = "Количество страниц";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(29, 253);
+            this.textBox3.Location = new System.Drawing.Point(30, 189);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(353, 38);
             this.textBox3.TabIndex = 2;
             // 
@@ -360,6 +366,7 @@ namespace IS.Forms
             this.textBox2.Location = new System.Drawing.Point(29, 54);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(353, 38);
             this.textBox2.TabIndex = 0;
             // 

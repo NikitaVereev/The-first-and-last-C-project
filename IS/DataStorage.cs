@@ -10,5 +10,8 @@ namespace IS
     {
         public static int id_user;
         public static string UserLogin;
+        public static string userCard;
+        public static int cardNumber;
+        public static string cardCVV;
     }
 }

@@ -286,16 +286,29 @@ namespace IS.Forms
 
         private void btn_delete_Click_1(object sender, EventArgs e)
         {
-
-            dataGridView2.Enabled = false;
-            DeleteRow();
-            ClearFields();
+            if (textBox2.Text == "" && textBox3.Text == "" && textBox4.Text == "" && textBox5.Text == "" && textBox6.Text == "" && textBox7.Text == "" && textBox8.Text == "")
+            {
+                MessageBox.Show("Выберете элемент удаления", "Ок", MessageBoxButtons.OK);
+            }
+            else
+            {
+                dataGridView2.Enabled = false;
+                DeleteRow();
+                ClearFields();
+            }
         }
 
         private void btn_save_Click_1(object sender, EventArgs e)
         {
-            Update();
-            ClearFields();
+            if (textBox2.Text == "" && textBox3.Text == "" && textBox4.Text == "" && textBox5.Text == "" && textBox6.Text == "" && textBox7.Text == "" && textBox8.Text == "")
+            {
+                MessageBox.Show("Выберете элемент удаления", "Ок", MessageBoxButtons.OK);
+            }
+            else
+            {
+                Update();
+                ClearFields();
+            }
         }
 
         private void Change()
