@@ -1,7 +1,15 @@
-
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 using IS.Forms;
-using Microsoft.Data.SqlClient;
+
 using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
@@ -63,7 +71,7 @@ namespace IS
             {
                 if (loginUser == "admin" && passUserr == "admin")
                 {
-                    AdminPanel frm1 = new AdminPanel(loginUser);
+                    AdminForm frm1 = new AdminForm(loginUser);
                     this.Hide();
                     frm1.ShowDialog();
                     this.Show();
@@ -193,6 +201,20 @@ MessageBox.Show("Вы успушно вошли!", "УСпешно!", MessageBoxButtons.OK, MessageBo
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+       
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if((l < 'А' || l > 'я') && (l < 'A' || l > 'z') && l != '\b' && l != '.')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using global::System;
+ using global::System.Collections.Generic;
+ using global::System.Drawing;
+ using global::System.IO;
+ using global::System.Linq;
+ using global::System.Net.Http;
+ using global::System.Threading;
+ using global::System.Threading.Tasks;
+ using global::System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace IS.Forms
@@ -93,6 +102,29 @@ namespace IS.Forms
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var countText = textBox9.Text;
+            
+
+
+
+            var countTextInt = int.Parse(countText);
+            
+
+            int CaltPrice = (countTextInt * 129);
+            textBox8.Text = CaltPrice.ToString();
+        }
+
+        private void textBox9_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

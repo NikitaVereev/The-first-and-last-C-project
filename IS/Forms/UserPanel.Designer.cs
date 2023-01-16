@@ -1,4 +1,15 @@
-﻿namespace IS.Forms
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+namespace IS.Forms
 {
     partial class UserPanel
     {
@@ -40,6 +51,8 @@
             this.btn_delete = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -61,8 +74,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -153,9 +164,9 @@
             // btn_new
             // 
             this.btn_new.Font = new System.Drawing.Font("Segoe UI Black", 11.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_new.Location = new System.Drawing.Point(1067, 113);
+            this.btn_new.Location = new System.Drawing.Point(1082, 192);
             this.btn_new.Name = "btn_new";
-            this.btn_new.Size = new System.Drawing.Size(210, 40);
+            this.btn_new.Size = new System.Drawing.Size(285, 75);
             this.btn_new.TabIndex = 0;
             this.btn_new.Text = "Публикация";
             this.btn_new.UseVisualStyleBackColor = true;
@@ -164,9 +175,9 @@
             // btn_delete
             // 
             this.btn_delete.Font = new System.Drawing.Font("Segoe UI Black", 11.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_delete.Location = new System.Drawing.Point(1072, 169);
+            this.btn_delete.Location = new System.Drawing.Point(1083, 329);
             this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(205, 40);
+            this.btn_delete.Size = new System.Drawing.Size(285, 75);
             this.btn_delete.TabIndex = 1;
             this.btn_delete.Text = "Перевод";
             this.btn_delete.UseVisualStyleBackColor = true;
@@ -204,30 +215,47 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(728, 673);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(125, 27);
+            this.textBox13.TabIndex = 10;
+            this.textBox13.Visible = false;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(889, 673);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(125, 27);
+            this.textBox10.TabIndex = 9;
+            this.textBox10.Visible = false;
+            // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(497, 639);
+            this.textBox11.Location = new System.Drawing.Point(597, 674);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(125, 27);
             this.textBox11.TabIndex = 8;
+            this.textBox11.Visible = false;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(18, 371);
+            this.label11.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(18, 426);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(229, 28);
+            this.label11.Size = new System.Drawing.Size(341, 38);
             this.label11.TabIndex = 7;
             this.label11.Text = "Одобреные переводы";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(17, 101);
+            this.label10.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(17, 148);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(252, 28);
+            this.label10.Size = new System.Drawing.Size(371, 38);
             this.label10.TabIndex = 6;
             this.label10.Text = "Одобреные публикации";
             // 
@@ -236,12 +264,12 @@
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(17, 402);
+            this.dataGridView3.Location = new System.Drawing.Point(18, 467);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 29;
-            this.dataGridView3.Size = new System.Drawing.Size(1045, 203);
+            this.dataGridView3.Size = new System.Drawing.Size(1350, 203);
             this.dataGridView3.TabIndex = 5;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
@@ -250,7 +278,7 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(17, 132);
+            this.dataGridView2.Location = new System.Drawing.Point(18, 192);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
@@ -409,20 +437,6 @@
             // 
             this.sqlCommand1.CommandTimeout = 30;
             this.sqlCommand1.EnableOptimizedParameterBinding = false;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(904, 611);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(125, 27);
-            this.textBox10.TabIndex = 9;
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(719, 645);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(125, 27);
-            this.textBox13.TabIndex = 10;
             // 
             // UserPanel
             // 

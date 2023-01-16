@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using Microsoft.Data.SqlClient;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace IS.Forms

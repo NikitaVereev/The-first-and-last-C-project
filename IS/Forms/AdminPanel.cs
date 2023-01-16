@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using Microsoft.Data.SqlClient;
+
 
 namespace IS.Forms
 {
     
-    public partial class AdminPanel : Form
+    public partial class AdminForm : Form
     {
         
 
@@ -21,12 +21,15 @@ namespace IS.Forms
 
         int selecedRow;
 
-        public AdminPanel(string loginUser)
+        public AdminForm(string loginUser)
         {
-
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
             textBox9.Text = loginUser;
         }
+
 
 
 
@@ -42,7 +45,7 @@ namespace IS.Forms
             dataGridView1.Columns.Add("price", "Цена");
             dataGridView1.Columns.Add("author", "Автор");
             dataGridView1.Columns.Add("IsNew", String.Empty);
-
+          
         }
         private void CreateColums2()
         {
@@ -68,6 +71,8 @@ namespace IS.Forms
             textBox7.Text = "";
             textBox8.Text = "";
         }
+
+       
 
         private void ReadSingleRow(DataGridView dgw, IDataRecord record)
         {
@@ -154,34 +159,43 @@ namespace IS.Forms
 
         private void btn_new_Click(object sender, EventArgs e)
         {
-            dataBase.openConnection();
-            var id = textBox2.Text;
-            int.Parse(id.ToString());
-            var type = textBox3.Text;
-            var count = textBox4.Text;
-            var title = textBox5.Text;
-            var text = textBox7.Text;
-            var author = textBox8.Text;
 
-            int price;
-
-            if (int.TryParse(textBox4.Text, out price))
+            if (textBox2.Text == "" && textBox3.Text == "" && textBox4.Text == "" && textBox5.Text == "" && textBox6.Text == "" && textBox7.Text == "" && textBox8.Text == "")
             {
-                var addQuery = $"insert into agreed (id_post, type_of, count_of, title, content, price, author, id_user) select id_post, type_of, count_of, title, content, price, author, id_user from posts where author = '{author}' and content = '{text}'" +
-                $"delete from posts where author = '{author}' and content = '{text}'";
-                   
-
-                var command = new SqlCommand(addQuery, dataBase.getConnection());
-                command.ExecuteNonQuery();
-
-                MessageBox.Show("Публикация успешно опубликована", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show("Выберете элемент удаления", "Ок", MessageBoxButtons.OK);
             }
             else
             {
-                MessageBox.Show("Где-то произошла ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dataBase.openConnection();
+                var id = textBox2.Text;
+                int.Parse(id.ToString());
+                var type = textBox3.Text;
+                var count = textBox4.Text;
+                var title = textBox5.Text;
+                var text = textBox7.Text;
+                var author = textBox8.Text;
+
+                int price;
+                if (int.TryParse(textBox4.Text, out price))
+                {
+                    var addQuery = $"insert into agreed (id_post, type_of, count_of, title, content, price, author, id_user) select id_post, type_of, count_of, title, content, price, author, id_user from posts where author = '{author}' and content = '{text}'" +
+                    $"delete from posts where author = '{author}' and content = '{text}'";
+                   
+
+                    var command = new SqlCommand(addQuery, dataBase.getConnection());
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Публикация успешно опубликована", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("Где-то произошла ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                dataBase.closeConnection();
             }
-            dataBase.closeConnection();
+
+            
         }
 
         private void btn_refresh_Click(object sender, EventArgs e)
@@ -273,8 +287,16 @@ namespace IS.Forms
         private void btn_delete_Click(object sender, EventArgs e)
         {
             dataGridView2.Enabled = false;
+            if(textBox2.Text == "" && textBox3.Text == "" && textBox4.Text == "" && textBox5.Text == "" && textBox6.Text == "" && textBox7.Text == "" && textBox8.Text == "")
+            {
+                MessageBox.Show("Выберете элемент удаления", "Ок", MessageBoxButtons.OK);
+            }
+            else
+            {
+
             DeleteRow();
             ClearFields();
+            }
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -308,11 +330,7 @@ namespace IS.Forms
             }
         }
 
-        private void btn_change_Click(object sender, EventArgs e)
-        {
-            Change();
-            ClearFields();
-        }
+        
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -351,6 +369,11 @@ namespace IS.Forms
         {
             AdminTranslates addFrm = new AdminTranslates();
             addFrm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

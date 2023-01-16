@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using Microsoft.Data.SqlClient;
+
 using static System.Net.Mime.MediaTypeNames;
 
 namespace IS.Forms
@@ -24,7 +24,9 @@ namespace IS.Forms
 
         public AdminTranslates()
         {
-
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
             
         }
@@ -167,37 +169,47 @@ namespace IS.Forms
 
         private void btn_new_Click(object sender, EventArgs e)
         {
-            dataBase.openConnection();
-            var id = textBox2.Text;
-            int.Parse(id.ToString());
-            var ann = textBox3.Text;
-            var syn = textBox4.Text;
-            var tran = textBox5.Text;
-            var tit = textBox6.Text;
-            var or_a = textBox7.Text;
-            var or_l = textBox8.Text;
-            var pri = textBox11.Text;
-            var count = textBox13.Text;
 
-            int price;
-
-            if (int.TryParse(textBox10.Text, out price))
+            if (textBox2.Text == "" && textBox3.Text == "" && textBox4.Text == "" && textBox5.Text == "" && textBox6.Text == "" && textBox7.Text == "" && textBox8.Text == "")
             {
-                var addQuery = $"insert into agreed_translates (id_translate, annotation, synopsis, trans, title, original_author, original_language, privilege, price, count_of, id_user) select id_translate, annotation, synopsis, trans, title, original_author, original_language, privilege, price, count_of, id_user from translates where id_translate = '{id}' and trans = '{tran}'" +
-                    $"delete from translates where id_translate = '{id}' and trans = '{tran}'";
-
-
-                var command = new SqlCommand(addQuery, dataBase.getConnection());
-                command.ExecuteNonQuery();
-
-                MessageBox.Show("Публикация успешно опубликована", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show("Выберете элемент удаления", "Ок", MessageBoxButtons.OK);
             }
             else
             {
-                MessageBox.Show("Где-то произошла ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dataBase.openConnection();
+                var id = textBox2.Text;
+                int.Parse(id.ToString());
+                var ann = textBox3.Text;
+                var syn = textBox4.Text;
+                var tran = textBox5.Text;
+                var tit = textBox6.Text;
+                var or_a = textBox7.Text;
+                var or_l = textBox8.Text;
+                var pri = textBox11.Text;
+                var count = textBox13.Text;
+
+                int price;
+
+                if (int.TryParse(textBox10.Text, out price))
+                {
+                    var addQuery = $"insert into agreed_translates (id_translate, annotation, synopsis, trans, title, original_author, original_language, privilege, price, count_of, id_user) select id_translate, annotation, synopsis, trans, title, original_author, original_language, privilege, price, count_of, id_user from translates where id_translate = '{id}' and trans = '{tran}'" +
+                        $"delete from translates where id_translate = '{id}' and trans = '{tran}'";
+
+
+                    var command = new SqlCommand(addQuery, dataBase.getConnection());
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Публикация успешно опубликована", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("Где-то произошла ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                dataBase.closeConnection();
             }
-            dataBase.closeConnection();
+
+           
         }
 
         private void btn_refresh_Click_1(object sender, EventArgs e)
@@ -274,6 +286,7 @@ namespace IS.Forms
 
         private void btn_delete_Click_1(object sender, EventArgs e)
         {
+
             dataGridView2.Enabled = false;
             DeleteRow();
             ClearFields();
@@ -313,11 +326,7 @@ namespace IS.Forms
             }
         }
 
-        private void btn_change_Click(object sender, EventArgs e)
-        {
-            Change();
-            ClearFields();
-        }
+        
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -361,6 +370,16 @@ namespace IS.Forms
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
         {
 
         }
