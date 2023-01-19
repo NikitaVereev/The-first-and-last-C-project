@@ -13,5 +13,6 @@ namespace IS
         public static string userCard;
         public static int cardNumber;
         public static string cardCVV;
+        public static string UserName;
     }
 }

@@ -251,6 +251,7 @@ namespace IS.Forms
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "NewPost";
             this.Text = "NewPost";
+            this.Load += new System.EventHandler(this.NewPost_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

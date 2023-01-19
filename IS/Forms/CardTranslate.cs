@@ -8,27 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace IS.Forms
 {
-    public partial class Card : Form
+    public partial class CardTranslate : Form
     {
 
-
+        
         DataBase dataBase = new DataBase();
         int selecedRow;
 
-        public Card(string getPrice, string type, string count, string title, string text, string author )
+        public CardTranslate(string getPrice, string ann,string syn, string tran,string tit,string or_a,string or_l,string pri, string count)
         {
             InitializeComponent();
             textBox4.Text = getPrice;
-            textBox5.Text = type;
-            textBox6.Text = count;
-            textBox7.Text = title;
-            textBox8.Text = text;
-            textBox9.Text = author;
+            textBox5.Text = ann;
+            textBox6.Text = syn;
+            textBox7.Text = tran;
+            textBox8.Text = tit;
+            textBox9.Text = or_a;
+            textBox10.Text = or_l;
+            textBox11.Text = pri;
+            textBox12.Text = count;
         }
         private void CreateColums()
         {
@@ -64,12 +65,12 @@ namespace IS.Forms
             reader.Close();
         }
 
-        private void Card_Load(object sender, EventArgs e)
+        private void CardTranslate_Load(object sender, EventArgs e)
         {
             CreateColums();
             RefrestDataGrid(dataGridView1);
         }
-        
+
 
         private void ClearFields()
         {
@@ -78,7 +79,7 @@ namespace IS.Forms
             textBox4.Text = "";
         }
 
-        
+
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -86,28 +87,31 @@ namespace IS.Forms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             dataBase.openConnection();
 
-            var type = textBox5.Text;
-            var count = textBox6.Text;
-            var title = textBox7.Text;
-            var text = textBox8.Text;
-            var author = textBox9.Text;
-
+            var ann = textBox5.Text;
+            var syn = textBox6.Text;
+            var tran = textBox7.Text;
+            var tit = textBox8.Text;
+            var or_a = textBox9.Text;
+            var or_l = textBox10.Text;
+            var pri = textBox11.Text;
             int price;
+
+            var count = textBox12.Text;
 
             if (int.TryParse(textBox4.Text, out price))
             {
-                var addQuery = $"insert into posts (type_of, count_of, title, content, price, author, id_user) values('{type}', '{count}', '{title}', '{text}', '{price}', '{author}', '{DataStorage.UserLogin}')";
+                var addQuery = $"insert into translates (annotation, synopsis, trans, title, original_author, original_language, privilege, price, count_of, id_user) values('{ann}','{syn}', '{tran}','{tit}','{or_a}', '{or_l}', '{pri}', '{price}', '{count}', '{DataStorage.UserLogin}')";
                 SqlCommand command = new SqlCommand(addQuery, dataBase.getConnection());
                 dataBase.openConnection();
 
                 command.ExecuteNonQuery();
                 dataBase.closeConnection();
 
-                MessageBox.Show("Публикация успешно создана", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Перевод успешно создана", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             else
@@ -117,7 +121,7 @@ namespace IS.Forms
             dataBase.closeConnection();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             selecedRow = e.RowIndex;
             if (e.RowIndex >= 0)
@@ -126,7 +130,7 @@ namespace IS.Forms
                 textBox1.Text = row.Cells[1].Value.ToString();
                 textBox2.Text = row.Cells[2].Value.ToString();
                 textBox3.Text = row.Cells[3].Value.ToString();
-      
+
 
             }
         }

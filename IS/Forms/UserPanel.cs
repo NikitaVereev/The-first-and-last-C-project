@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Net.Mime.MediaTypeNames;
 using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace IS.Forms
 {
@@ -37,6 +38,7 @@ namespace IS.Forms
 
             InitializeComponent();
             textBox8.Text = loginUser;
+            
             groupBox1.Visible= false;
         }
 
@@ -172,6 +174,7 @@ namespace IS.Forms
         private void btn_new_Click(object sender, EventArgs e)
         {
             var loginUser = textBox8.Text;
+            var user_name = textBox12.Text;
             NewPost addFrm = new NewPost(loginUser);
             addFrm.Show();
         }
@@ -367,6 +370,27 @@ namespace IS.Forms
                 MessageBox.Show("Вы не заполнили все поля", "Предупреждение");
             }
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+           
+
+            if (textBox12.Text != "")
+            {
+                var user_name = textBox12.Text;
+                
+                var changeQuery = $"update register set name_user = '{user_name}' where id_user = '{DataStorage.UserLogin}'";
+                var command = new SqlCommand(changeQuery, dataBase.getConnection());
+                command.ExecuteNonQuery();
+                dataBase.closeConnection();
+                MessageBox.Show("Вы успешно добавили имя");
+            }
+            else
+            {
+                MessageBox.Show("Вы не заполнили все поля", "Предупреждение");
+            }
         }
     }
 }

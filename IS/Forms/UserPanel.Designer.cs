@@ -46,6 +46,14 @@ namespace IS.Forms
             this.button3 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -83,17 +91,11 @@ namespace IS.Forms
             this.label8 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -101,7 +103,6 @@ namespace IS.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -167,11 +168,12 @@ namespace IS.Forms
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Size = new System.Drawing.Size(1478, 555);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Профиль";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button6);
             this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Controls.Add(this.panel2);
             this.groupBox3.Controls.Add(this.label14);
@@ -183,14 +185,89 @@ namespace IS.Forms
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Дополинтельная информация";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(18, 349);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(168, 37);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Добавить карту";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel2.Controls.Add(this.textBox14);
+            this.panel2.Controls.Add(this.textBox15);
+            this.panel2.Controls.Add(this.textBox16);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Location = new System.Drawing.Point(18, 99);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(454, 243);
+            this.panel2.TabIndex = 6;
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(20, 55);
+            this.textBox14.Multiline = true;
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(417, 42);
+            this.textBox14.TabIndex = 0;
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(252, 184);
+            this.textBox15.Multiline = true;
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(199, 42);
+            this.textBox15.TabIndex = 4;
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(20, 184);
+            this.textBox16.Multiline = true;
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(202, 42);
+            this.textBox16.TabIndex = 3;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(17, 18);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(92, 16);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Номер карты";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(17, 155);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(103, 16);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Срок действия";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(285, 155);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(61, 16);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "CVV-код";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(15, 34);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(97, 16);
+            this.label14.Size = new System.Drawing.Size(476, 16);
             this.label14.TabIndex = 5;
-            this.label14.Text = "Добавить имя";
+            this.label14.Text = "Добавить имя. В дальнейшем имя будет использоваться как имя автора";
             // 
             // textBox12
             // 
@@ -337,7 +414,7 @@ namespace IS.Forms
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Size = new System.Drawing.Size(1478, 555);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Главная";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // textBox13
@@ -572,80 +649,15 @@ namespace IS.Forms
             this.textBox2.Size = new System.Drawing.Size(353, 38);
             this.textBox2.TabIndex = 0;
             // 
-            // panel2
+            // button6
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel2.Controls.Add(this.textBox14);
-            this.panel2.Controls.Add(this.textBox15);
-            this.panel2.Controls.Add(this.textBox16);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Controls.Add(this.label17);
-            this.panel2.Location = new System.Drawing.Point(18, 99);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(454, 243);
-            this.panel2.TabIndex = 6;
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(20, 55);
-            this.textBox14.Multiline = true;
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(417, 42);
-            this.textBox14.TabIndex = 0;
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(252, 184);
-            this.textBox15.Multiline = true;
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(199, 42);
-            this.textBox15.TabIndex = 4;
-            // 
-            // textBox16
-            // 
-            this.textBox16.Location = new System.Drawing.Point(20, 184);
-            this.textBox16.Multiline = true;
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(202, 42);
-            this.textBox16.TabIndex = 3;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(17, 18);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(92, 16);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Номер карты";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(17, 155);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(103, 16);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Срок действия";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(285, 155);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(61, 16);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "CVV-код";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(18, 349);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(168, 37);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Добавить карту";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button6.Location = new System.Drawing.Point(119, 64);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(121, 29);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "Добавить";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // UserPanel
             // 
@@ -666,6 +678,8 @@ namespace IS.Forms
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -677,8 +691,6 @@ namespace IS.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -738,5 +750,6 @@ namespace IS.Forms
         private Label label15;
         private Label label16;
         private Label label17;
+        private Button button6;
     }
 }

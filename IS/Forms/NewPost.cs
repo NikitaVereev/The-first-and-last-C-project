@@ -28,7 +28,7 @@ namespace IS.Forms
         {
             InitializeComponent();
             StartPosition= FormStartPosition.CenterScreen;
-            textBox6.Text = loginUser;
+            textBox6.Text = DataStorage.UserName;
 
             
 
@@ -48,41 +48,22 @@ namespace IS.Forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
-            var getPrice = textBox4.Text;
-
-            Card addFrm = new Card(getPrice);
-            addFrm.Show();
-            /*
             
-            dataBase.openConnection();
-
+            var getPrice = textBox4.Text;
             var type = textBox1.Text;
             var count = textBox2.Text;
             var title = textBox3.Text;
             var text = textBox5.Text;
             var author = textBox6.Text;
-        
-            int price;
 
-            if(int.TryParse(textBox4.Text, out price) )
-            {
-                var addQuery = $"insert into posts (type_of, count_of, title, content, price, author, id_user) values('{type}', '{count}', '{title}', '{text}', '{price}', '{author}', '{DataStorage.UserLogin}')" ;
-                SqlCommand command = new SqlCommand(addQuery, dataBase.getConnection());
-                dataBase.openConnection();
-
-                command.ExecuteNonQuery();
-                dataBase.closeConnection();
-
-                MessageBox.Show("Публикация успешно создана", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            else
-            {
-                MessageBox.Show("Где-то произошла ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            dataBase.closeConnection();
-            */
+            Card addFrm = new Card(getPrice, type, count, title, text, author);
+            addFrm.Show();
+            
+            
+            
+           
+            
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -157,6 +138,11 @@ namespace IS.Forms
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NewPost_Load(object sender, EventArgs e)
         {
 
         }

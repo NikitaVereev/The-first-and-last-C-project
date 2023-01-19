@@ -367,7 +367,7 @@ namespace IS.Forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            AdminTranslates addFrm = new AdminTranslates();
+            var addFrm = new AdminTranslates();
             addFrm.Show();
         }
 

@@ -46,6 +46,7 @@ namespace IS
 
             string querystring = $"select id_user, login_user, password_user, is_admin from register where login_user = '{loginUser}' and password_user = '{passUserr}'";
             var queryGetId = $"select id_user from register where login_user = '{loginUser}'";
+            
 
             var commandGetId = new SqlCommand(queryGetId, dataBase.getConnection());
 
@@ -54,6 +55,7 @@ namespace IS
             while (reader.Read())
             {
                 DataStorage.UserLogin = reader[0].ToString();
+                
             }
             reader.Close();
             

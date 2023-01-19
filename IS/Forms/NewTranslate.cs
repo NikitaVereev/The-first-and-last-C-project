@@ -47,7 +47,8 @@ namespace IS.Forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            dataBase.openConnection();
+            var getPrice = textBox8.Text;
+            var count = textBox9.Text;
 
             var ann = textBox1.Text;
             var syn = textBox2.Text;
@@ -56,27 +57,12 @@ namespace IS.Forms
             var or_a = textBox5.Text;
             var or_l = textBox6.Text;
             var pri = textBox7.Text;
-            int price;
 
-            var count = textBox9.Text;
+            CardTranslate addFrm = new CardTranslate(getPrice, ann, syn, tran, tit, or_a, or_l, pri, count);
+            addFrm.Show();
 
-            if (int.TryParse(textBox8.Text, out price))
-            {
-                var addQuery = $"insert into translates (annotation, synopsis, trans, title, original_author, original_language, privilege, price, count_of, id_user) values('{ann}','{syn}', '{tran}','{tit}','{or_a}', '{or_l}', '{pri}', '{price}', '{count}', '{DataStorage.UserLogin}')";
-                SqlCommand command = new SqlCommand(addQuery, dataBase.getConnection());
-                dataBase.openConnection();
 
-                command.ExecuteNonQuery();
-                dataBase.closeConnection();
-
-                MessageBox.Show("Перевод успешно создана", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            else
-            {
-                MessageBox.Show("Где-то произошла ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            dataBase.closeConnection();
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
